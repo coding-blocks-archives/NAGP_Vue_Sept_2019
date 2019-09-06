@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+
+  <div id="app1">
+    {{ msg }}
+    <br>
+    <button @click="sayHello">Click Here</button>
+    <br>
+    <button @click="cap">Capitalise</button>
+  </div>
+
+  <div id="app2">
+    <input type="number" v-model="x">
+    <input type="number" v-model="y">
+    {{ x }}
+    {{ y }}
+  </div>
+
+
+  <script>
+    const app1 = new Vue({
+      el: '#app1',
+      data: {
+        msg: 'Hello World!'
+      },
+      methods: {
+        sayHello() {
+          window.alert("Hello!!!")
+        },
+        cap() {
+          this.msg = this.msg.toUpperCase()
+        }
+      }
+    })
+
+    const app2 = new Vue({
+      el: '#app2',
+      data: {
+        x: 10, y: 20
+      }
+    })
+  </script>
+
+</body>
+</html>
