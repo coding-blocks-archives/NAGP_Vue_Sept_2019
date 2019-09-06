@@ -1,54 +1,77 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Document</title>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
 
-  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
-</head>
-<body>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  </head>
+  <body>
+    <div id="app1">
+      {{ msg }}
+      <br />
+      <button @click="sayHello">Click Here</button>
+      <br />
+      <button @click="cap">Capitalise</button>
+    </div>
 
-  <div id="app1">
-    {{ msg }}
-    <br>
-    <button @click="sayHello">Click Here</button>
-    <br>
-    <button @click="cap">Capitalise</button>
-  </div>
-
-  <div id="app2">
-    <input type="number" v-model="x">
-    <input type="number" v-model="y">
-    {{ x }}
-    {{ y }}
-  </div>
-
-
-  <script>
-    const app1 = new Vue({
-      el: '#app1',
-      data: {
-        msg: 'Hello World!'
-      },
-      methods: {
-        sayHello() {
-          window.alert("Hello!!!")
+    <script>
+      const app1 = new Vue({
+        el: '#app1',
+        data: {
+          msg: 'Hello World!',
         },
-        cap() {
-          this.msg = this.msg.toUpperCase()
+        methods: {
+          sayHello() {
+            window.alert('Hello!!!')
+          },
+          cap() {
+            this.msg = this.msg.toUpperCase()
+          },
+        },
+      })
+    </script>
+
+    <div id="app2">
+      <input type="number" v-model="x" />
+      <input type="number" v-model="y" />
+      {{ x }}
+      {{ y }}
+    </div>
+
+    <script>
+      const app2 = new Vue({
+        el: '#app2',
+        data: {
+          x: 10,
+          y: 20,
+        },
+      })
+    </script>
+
+    <div id="app3">
+      <ul>
+        <li v-for="f in fruits">
+          We have {{ f.qty }} {{ f.name }}
+        </li>
+      </ul>
+    </div>
+
+    <script>
+      const app3 = new Vue({
+        el: '#app3',
+        data: {
+          fruits: [
+            {name: 'Apple', qty: 10},
+            {name: 'Banana', qty: 30},
+            {name: 'Kiwi', qty: 100},
+          ]
         }
-      }
-    })
+      })
+    </script>
 
-    const app2 = new Vue({
-      el: '#app2',
-      data: {
-        x: 10, y: 20
-      }
-    })
-  </script>
 
-</body>
+  </body>
 </html>
