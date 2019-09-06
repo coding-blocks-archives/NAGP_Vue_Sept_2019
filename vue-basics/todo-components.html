@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  </head>
+  <body>
+    <div id="todoapp">
+      <input v-model="task" />
+      <button @click="addtask">ADD</button>
+      <ul>
+        <li v-for="t in tasklist">
+          <task-item :task="t"></task-item>
+        </li>
+      </ul>
+    </div>
+
+    <script>
+      Vue.component('task-item', {
+        props: ['task'],
+        template: `
+        <strike @click="toggle" v-if="task.done"> {{task.name}} </strike>
+        <span @click="toggle"  v-else > {{ task.name }} </span>
+      `,
+        methods: {
+          toggle() {
+            this.task.done = !this.task.done
+          },
+        },
+      })
+
+      const todoapp = new Vue({
+        el: '#todoapp',
+        data() {
+          return {
+            task: '',
+            tasklist: [{ name: 'Do something', done: false }, { name: 'Do another thing', done: true }],
+          }
+        },
+        methods: {
+          addtask() {
+            this.tasklist.push({ name: this.task, done: false })
+          },
+        },
+      })
+    </script>
+  </body>
+</html>

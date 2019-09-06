@@ -20,8 +20,8 @@
     <script>
       const app1 = new Vue({
         el: '#app1',
-        data: {
-          msg: 'Hello World!',
+        data() {
+          return { msg: 'Hello World!', }
         },
         methods: {
           sayHello() {
