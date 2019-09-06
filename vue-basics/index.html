@@ -37,8 +37,7 @@
     <div id="app2">
       <input type="number" v-model="x" />
       <input type="number" v-model="y" />
-      {{ x }}
-      {{ y }}
+      {{ x + y }}
     </div>
 
     <script>
@@ -47,15 +46,19 @@
         data: {
           x: 10,
           y: 20,
+          a: 10
+        },
+        computed: {
+          z() {
+            return this.x + this.y
+          }
         },
       })
     </script>
 
     <div id="app3">
       <ul>
-        <li v-for="f in fruits">
-          We have {{ f.qty }} {{ f.name }}
-        </li>
+        <li v-for="f in fruits">We have {{ f.qty }} {{ f.name }}</li>
       </ul>
     </div>
 
@@ -63,15 +66,32 @@
       const app3 = new Vue({
         el: '#app3',
         data: {
-          fruits: [
-            {name: 'Apple', qty: 10},
-            {name: 'Banana', qty: 30},
-            {name: 'Kiwi', qty: 100},
-          ]
-        }
+          fruits: [{ name: 'Apple', qty: 10 }, { name: 'Banana', qty: 30 }, { name: 'Kiwi', qty: 100 }],
+        },
       })
     </script>
 
-
+    <div id="app4">
+      <input v-model="task" />
+      <button @click="addtask">ADD</button>
+      <ul>
+        <li v-for="t in tasklist">{{ t }}</li>
+      </ul>
+    </div>
+    <script>
+      const app4 = new Vue({
+        el: '#app4',
+        data: {
+          task: '',
+          tasklist: []
+        },
+        methods: {
+          addtask() {
+            this.tasklist.push(this.task)
+            this.task = ''
+          }
+        }
+      })
+    </script>
   </body>
 </html>
