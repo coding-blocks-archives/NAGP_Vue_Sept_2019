@@ -1,5 +1,15 @@
 # vue-bootstrap-todolist
 
+## Project Creation
+
+```shell
+
+vue create vue-bootstrap-todolist
+cd vue-bootstrap-todolist
+vue add bootstrap-vue
+
+```
+
 ## Project setup
 ```
 yarn install
