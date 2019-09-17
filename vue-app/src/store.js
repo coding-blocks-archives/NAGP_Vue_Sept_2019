@@ -8,12 +8,13 @@ export const MUTATIONS = {
 }
 
 export default new Vuex.Store({
+  strict: true,
   state: {
     count: 0
   },
   mutations: {
-    [MUTATIONS.ADD_PEOPLE](state) {
-      state.count++
+    [MUTATIONS.ADD_PEOPLE](state, payload) {
+      state.count += payload
     }
   },
   actions: {
