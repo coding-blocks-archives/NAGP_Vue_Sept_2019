@@ -1,6 +1,7 @@
 <template>
   <div class="hello">
-    <h1>{{ msg }} {{ name }}</h1>
+    <h1>{{ myMsg }} {{ name }}</h1>
+    <button @click="congratulate">Appreciate Me!</button>
     <p>
       For a guide and recipes on how to configure / customize this project,<br />
       check out the
@@ -108,6 +109,14 @@ export default {
   props: {
     msg: String,
     name: String
+  },
+  data() {return {
+    myMsg: this.msg
+  }},
+  methods: {
+    congratulate() {
+      this.myMsg = 'Congratulations!'
+    }
   }
 };
 </script>
