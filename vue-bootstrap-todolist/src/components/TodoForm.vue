@@ -21,7 +21,7 @@ export default {
   },
   methods: {
     addTask() {
-      store.commit("addTask", { title: this.newTodo, done: false });
+      store.commit("addTask", { title: this.newTodo, done: true });
       this.newTodo = "";
     }
   }
